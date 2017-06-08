@@ -24,7 +24,7 @@ gulp.task('default', gulp.series('help'));
 gulp.task('watch', watch);
 
 // build
-gulp.task(`build`, gulp.series('clean:dist', 'clean', 'partials', 'resources', 'scripts', 'styles', 'vet', 'build'));
+gulp.task(`build`, gulp.series('clean:dist', 'clean', 'partials', 'resources', 'scripts', 'styles', 'inject-vendor', 'vet', 'build'));
 for (let flavor of flavorList()) {
     gulp.task(`build:${flavor}`, gulp.series(cb => setEnv(cb, flavor), 'build'));
 }
@@ -37,9 +37,16 @@ gulp.task('test:auto', gulp.series(cb => setEnv(cb, 'test'),
     'clean', 'scripts', 'partials', 'watch', 'karma:auto-run'));
 
 // serve
-gulp.task('serve', gulp.series('clean', cb => setEnv(cb, 'dev'), 'scripts', 'styles', 'resources:i18n',
+gulp.task('serve', gulp.series('clean', cb => setEnv(cb, 'dev'), 'scripts', 'styles','inject-vendor', 'resources:i18n',
     'watch', 'browsersync'));
 gulp.task('serve:dist', gulp.series('browsersync:dist'));
+
+var wiredep = require('wiredep').stream;
+gulp.task('inject-vendor', function() {
+    gulp.src('./.tmp/index.html')
+        .pipe(wiredep({}))
+        .pipe(gulp.dest('./www'));
+});
 
 function reloadBrowserSync(cb) {
     log.debug('reload...');

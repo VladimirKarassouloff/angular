@@ -1,10 +1,9 @@
 (function() {
     'use strict';
-    angular.module('app', [
+    angular.module('app.hello', [
         'ngAnimate',
         'ui.router',
-        'blocks',
-        'app.hello'
+        'blocks'
     ]);
 
 })();

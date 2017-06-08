@@ -1,14 +1,14 @@
 (function() {
     'use strict';
     angular
-        .module('app')
+        .module('app.hello')
         .config(routesConfig);
 
     function routesConfig($stateProvider) {
         $stateProvider
             .state('app', {
-                url: '/',
-                component: 'hello'
+                url: '/hello',
+                component: 'hellocdb'
             });
     }
 })();

@@ -1,5 +1,4 @@
 body {
-    background-color: red;
     overflow: hidden;
     font-family: 'Open Sans', sans-serif;
 
@@ -23,4 +22,11 @@ a, *[ng-click], *[ui-sref] {
 
 a {
     cursor: pointer;
+}
+
+hellocdb > {
+
+}
+hellocdb > .mdr{
+    background-color: green;
 }

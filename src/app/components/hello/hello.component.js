@@ -1,11 +1,11 @@
 (function () {
     'use strict';
 
-    angular.module('app')
-        .component('hello', {
-            templateUrl: 'src/app/hello.html',
+    angular.module('app.hello')
+        .component('hellocdb', {
+            templateUrl: 'src/app/components/hello/hello.html',
             controller: HelloController
-        });
+        }, ['app.hello']);
 
     function HelloController($log) {
         // jshint validthis: true

@@ -3,10 +3,10 @@
 
 describe('hello component', () => {
 
-    beforeEach(module('app', $provide => {
-        $provide.factory('hello', () => {
+    beforeEach(module('app.hello', $provide => {
+        $provide.factory('hellocdb', () => {
             return {
-                templateUrl: 'app/hello.html'
+                templateUrl: 'app/components/hello/hello.html'
             };
         });
     }));
