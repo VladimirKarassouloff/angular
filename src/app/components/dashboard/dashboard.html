@@ -18,7 +18,7 @@
             </div>
             <div class="pull-right">
                 <a class="btn btn-success" id="addComputer" href="computer">computer.add</a>
-                <a class="btn btn-default" id="editComputer" href="#" ng-click="toggleEditMode()">edit</a>
+                <a class="btn btn-default" id="editComputer" href="#" ng-click="$ctrl.editMode = !$ctrl.editMode">edit</a>
             </div>
         </div>
     </div>
@@ -34,7 +34,7 @@
                 <!-- Variable declarations for passing labels as parameters -->
                 <!-- Table header for Computer Name -->
 
-                <th class="editMode" style="width: 60px; height: 22px; display: none;">
+                <th class="editMode" style="width: 60px; height: 22px; " ng-hide="$ctrl.editMode">
                     <input type="checkbox" id="selectall"/>
                     <span style="vertical-align: top;"> -
                         <a href="#" id="deleteSelected" onclick="$.fn.deleteSelected();">
@@ -77,7 +77,7 @@
 
             <!-- TODO track by -->
             <tr ng-repeat="computer in $ctrl.currentComputerList">
-                <td class="editMode" style="display: none;"><input type="checkbox" name="cb" class="cb"
+                <td class="editMode" ng-hide="$ctrl.editMode"><input type="checkbox" name="cb" class="cb"
                                                                    value="${computer.id}"></td>
                 <td><a href="#" ng-click="$ctrl.editComputer(computer)">{{computer.name}}</a></td>
                 <td>{{computer.introduced}}</td>
@@ -98,6 +98,7 @@
     </div>
 
     <div class="container text-center">
+        <cdbPagination></cdbPagination>
         TODO page link
         <!-- <mystuff:pagination-link totalCount="${totalCount}" itemPerPage="${lengthPage}" currentPage="${currentPage}"
                                  linkGenerated="index" paramNameUrlCurrent="currentPage"/> -->

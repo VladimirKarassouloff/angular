@@ -11,6 +11,7 @@
     function DashboardController($scope, $log, $clientService) {
         // jshint validthis: true
         const vm = this;
+        vm.editMode = true;
         vm.searchTerm = '';
 
         vm.computerPage = null;
