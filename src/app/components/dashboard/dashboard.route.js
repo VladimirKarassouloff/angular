@@ -1,15 +1,15 @@
 (function() {
     'use strict';
     angular
-        .module('app.hello')
+        .module('app.dashboard')
         .config(routesConfig);
 
     /* @ngInject */
     function routesConfig($stateProvider) {
         $stateProvider
-            .state('app', {
-                url: '/hello',
-                component: 'hellocdb'
+            .state('dashboard', {
+                url: '/dashboard',
+                component: 'cdbDashboard'
             });
     }
 })();

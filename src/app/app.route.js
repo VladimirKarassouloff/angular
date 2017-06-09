@@ -1,15 +1,15 @@
 (function() {
     'use strict';
     angular
-        .module('app.hello')
+        .module('app')
         .config(routesConfig);
 
     /* @ngInject */
     function routesConfig($stateProvider) {
         $stateProvider
-            .state('app', {
-                url: '/hello',
-                component: 'hellocdb'
+            .state('404', {
+                url: '/404',
+                templateUrl: 'src/app/404.html'
             });
     }
 })();

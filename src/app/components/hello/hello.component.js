@@ -5,8 +5,9 @@
         .component('hellocdb', {
             templateUrl: 'src/app/components/hello/hello.html',
             controller: HelloController
-        }, ['app.hello']);
+        }, [/*'app.hello'*/]);
 
+    /* @ngInject */
     function HelloController($log) {
         // jshint validthis: true
         const vm = this;
