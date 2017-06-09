@@ -5,7 +5,7 @@
         .component('hellocdb', {
             templateUrl: 'src/app/components/hello/hello.html',
             controller: HelloController
-        }, [/*'app.hello'*/]);
+        });
 
     /* @ngInject */
     function HelloController($log) {
