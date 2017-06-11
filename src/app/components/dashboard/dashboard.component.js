@@ -12,19 +12,20 @@
         // jshint validthis: true
         const vm = this;
         vm.editMode = true;
+
+        // Param request for the displayed page
         vm.searchTerm = '';
-
-        vm.computerPage = null;
-        vm.currentPage = 0;
-        vm.sizePage = 20;
-        vm.countComputer = 0;
-        vm.totalPage = 0;
-
-        vm.currentComputerList = [];
-        vm.companies = [];
-
+        vm.pageRequested = 0;
+        vm.sizePage = 10;
         vm.propertySorted = "name";
         vm.sortOrder = "ASC";
+
+        // Object containing list of computer, total number of items, ...
+        vm.currentPage = {};
+        
+        // All companies
+        vm.companies = [];
+
 
         vm.$onInit = $onInit;
 
@@ -43,18 +44,19 @@
 
         function updatePage() {
             console.log('TODO prendre en compte le searchterm ' + vm.searchTerm);
-            $clientService.getComputerPage(vm.currentPage, vm.sizePage, vm.propertySorted, vm.sortOrder).then((resp) => {
+            $clientService.getComputerPage(vm.pageRequested, vm.sizePage, vm.propertySorted, vm.sortOrder).then((resp) => {
                 console.log(resp.data);
-                let pageInfo = resp.data;
-                vm.totalPage = pageInfo.totalPages;
-                vm.countComputer = pageInfo.totalElements;
-                vm.currentComputerList = pageInfo.content;
+                vm.currentPage = resp.data;
             }, () => {
                 console.log('TODO handle error');
             });
         }
 
-        vm.toggleOrderProperty = function(newPropertySorty) {
+        vm.toggleEditMode = () => {
+            vm.editMode = !vm.editMode;
+        }
+
+        vm.toggleOrderProperty = (newPropertySorty) => {
             if (vm.propertySorted === newPropertySorty) {
                 if (vm.sortOrder === 'ASC') {
                     vm.sortOrder = 'DESC';
@@ -67,9 +69,20 @@
             updatePage();
         };
 
-        vm.editComputer = function(computer) {
+        vm.editComputer = (computer) => {
             console.log("TODO edit ", computer);
         }
 
+        vm.setPageLength = (newSizeRequest) => {
+            vm.sizePage = newSizeRequest;
+            updatePage();
+        }
+
+        vm.setPageRequested = (newPageRequested) => {
+            vm.pageRequested = newPageRequested;
+            updatePage();
+        }
     }
+
+    
 })();

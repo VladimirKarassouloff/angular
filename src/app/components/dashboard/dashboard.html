@@ -5,7 +5,7 @@
     </form>
 
     <div class="container">
-        <h1 id="homeTitle">{{$ctrl.countComputer}} computers.found</h1>
+        <h1 id="homeTitle">{{$ctrl.page.totalElements}} computers.found</h1>
         <div id="actions" class="form-horizontal">
             <div class="pull-left">
                 <form id="searchForm" action="#" method="GET" class="form-inline">
@@ -18,7 +18,7 @@
             </div>
             <div class="pull-right">
                 <a class="btn btn-success" id="addComputer" href="computer">computer.add</a>
-                <a class="btn btn-default" id="editComputer" href="#" ng-click="$ctrl.editMode = !$ctrl.editMode">edit</a>
+                <a class="btn btn-default" id="editComputer" href="#" ng-click="$ctrl.toggleEditMode()">edit</a>
             </div>
         </div>
     </div>
@@ -69,14 +69,14 @@
             <!-- Browse attribute computers -->
             <tbody id="results">
 
-            <tr ng-if="$ctrl.currentComputerList.length == 0">
+            <tr ng-if="$ctrl.currentPage.content.length == 0">
                 <td colspan="5">
                     no.computer.found
                 </td>
             </tr>
 
             <!-- TODO track by -->
-            <tr ng-repeat="computer in $ctrl.currentComputerList">
+            <tr ng-repeat="computer in $ctrl.currentPage.content">
                 <td class="editMode" ng-hide="$ctrl.editMode"><input type="checkbox" name="cb" class="cb"
                                                                    value="${computer.id}"></td>
                 <td><a href="#" ng-click="$ctrl.editComputer(computer)">{{computer.name}}</a></td>
@@ -92,14 +92,9 @@
 
 <footer class="navbar-fixed-bottom">
 
-    <div class="btn-group btn-group-sm pull-left" role="group">
-        <a class="btn btn-default" href="?locale=fr">fr</a>
-        <a class="btn btn-default" href="?locale=en">en</a>
-    </div>
 
     <div class="container text-center">
-        <cdbPagination></cdbPagination>
-        TODO page link
+        <app.pagination page="$ctrl.currentPage" events="{changePage: $ctrl.setPageLength, changeSizePage: $ctrl.setPageRequested}"/>
         <!-- <mystuff:pagination-link totalCount="${totalCount}" itemPerPage="${lengthPage}" currentPage="${currentPage}"
                                  linkGenerated="index" paramNameUrlCurrent="currentPage"/> -->
 
