@@ -3,7 +3,7 @@
 
     angular.module('app.dashboard')
         .component('app.pagination', {
-            templateUrl: 'src/app/components/dashboard/pagination.html',
+            templateUrl: 'src/app/components/pagination/pagination.html',
             controller: PaginationController,
             bindings: {
                 page: '<',
@@ -18,10 +18,10 @@
 
         vm.linksLeftRight = 2;
 
-        vm.page = null
+        vm.page = null;
 
         vm.events = {};
-        vm.myRange = [];
+        vm.myRange = [1,2];
         vm.$onInit = $onInit;
         vm.$onChanges = $onChanges;
 
@@ -44,23 +44,23 @@
                 return;
             }
             var indexes = [];
-            console.log("TODO rajouter la current page dans l'api");
-            for(var i = vm.page.currentPage ; i < 2 * vm.linksLeftRight + 1 ; i++) {
+            console.log("TODO rajouter la current page");
+            for (var i = vm.page.currentPage - vm.linksLeftRight; i < 2 * vm.linksLeftRight + 1; i++) {
                 console.log(i);
                 indexes = indexes.push(i);
             }
-            console.log("index : " , indexes);
-            
+            console.log("index : ", indexes);
+
         }
 
         vm.changePage = (page) => {
             vm.events.changePage.call(page);
-        }
+        };
 
         vm.changePageSize = (size) => {
             vm.events.changeSizePage.call(size);
-        }
+        };
 
-    };
+    }
 
 })();

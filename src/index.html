@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <base href="/">
     <style>
         /* This helps the ng-show/ng-hide animations start at the right place. */
         /* Since Angular has this but needs to load, this gives us the class early. */
-        .ng-hide { display: none!important; }
+
+        .ng-hide {
+            display: none!important;
+        }
     </style>
     <meta charset="utf-8">
     <title ng-bind="title">Computer Database</title>
@@ -27,32 +31,37 @@
     <!-- endinject -->
     <!-- endbuild -->
 </head>
+
 <body ng-app="app">
+    <header class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index"> Application - Computer Database </a>
+        </div>
+    </header>
 
-<!-- build:js({.tmp,src}) scripts/vendor.js -->
-<!-- bower:js -->
-<!-- run `gulp inject` to automatically populate bower script dependencies -->
-<!-- endbower -->
-<!-- endbuild -->
+    <!-- build:js({.tmp,src}) scripts/vendor.js -->
+    <!-- bower:js -->
+    <!-- run `gulp inject` to automatically populate bower script dependencies -->
+    <!-- endbower -->
+    <!-- endbuild -->
 
-<!-- inject:env:js -->
-<!-- endinject -->
+    <!-- inject:env:js -->
+    <!-- endinject -->
 
-<!-- build:js({.tmp,src}) scripts/app.js -->
-<!-- inject:scripts:js -->
-<!-- js files will be automatically insert here -->
-<!-- endinject -->
-<!-- inject:partials -->
-<!-- angular templates will be automatically converted in js and inserted here -->
-<!-- endinject -->
-<!-- endbuild -->
+    <!-- build:js({.tmp,src}) scripts/app.js -->
+    <!-- inject:scripts:js -->
+    <!-- js files will be automatically insert here -->
+    <!-- endinject -->
+    <!-- inject:partials -->
+    <!-- angular templates will be automatically converted in js and inserted here -->
+    <!-- endinject -->
+    <!-- endbuild -->
 
-<ui-view></ui-view>
+    <ui-view></ui-view>
 </body>
+
 </html>
 
-<!--
     <link rel="stylesheet" href="../src/styles/bootstrap.css">
     <link rel="stylesheet" href="../src/styles/font-awesome.css">
     <link rel="stylesheet" href="../src/styles/main.css">
--->

@@ -8,7 +8,7 @@
         });
 
     /* @ngInject */
-    function DashboardController($scope, $log, $clientService) {
+    function DashboardController($state, $scope, $log, $clientService) {
         // jshint validthis: true
         const vm = this;
         vm.editMode = true;
@@ -17,29 +17,17 @@
         vm.searchTerm = '';
         vm.pageRequested = 0;
         vm.sizePage = 10;
-        vm.propertySorted = "name";
-        vm.sortOrder = "ASC";
+        vm.propertySorted = 'name';
+        vm.sortOrder = 'ASC';
 
         // Object containing list of computer, total number of items, ...
         vm.currentPage = {};
-        
-        // All companies
-        vm.companies = [];
-
 
         vm.$onInit = $onInit;
 
         function $onInit() {
             $log.debug('DashboardController init' + $clientService);
             updatePage();
-        }
-
-        function fetchCompanies() {
-            $clientService.getCompanies().then((resp) => {
-                vm.companies = resp.data;
-            }, () => {
-                console.log('error ', arguments);
-            });
         }
 
         function updatePage() {
@@ -54,7 +42,7 @@
 
         vm.toggleEditMode = () => {
             vm.editMode = !vm.editMode;
-        }
+        };
 
         vm.toggleOrderProperty = (newPropertySorty) => {
             if (vm.propertySorted === newPropertySorty) {
@@ -69,20 +57,19 @@
             updatePage();
         };
 
-        vm.editComputer = (computer) => {
-            console.log("TODO edit ", computer);
-        }
-
         vm.setPageLength = (newSizeRequest) => {
             vm.sizePage = newSizeRequest;
             updatePage();
-        }
+        };
 
         vm.setPageRequested = (newPageRequested) => {
             vm.pageRequested = newPageRequested;
             updatePage();
-        }
+        };
+
+        vm.editComputer = (computer) => {
+            $state.go('computer', {computer: computer});
+        };
     }
 
-    
 })();

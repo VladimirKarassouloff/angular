@@ -13,18 +13,10 @@
         return {
             getComputerPage: function (page, size, property, direction) {
                 return $http.get(urlComputerPage + '?page=' + page + '&size=' + size +
-                    '&property=' + property + '&direction=' + direction);/*.then(function () {
-                    console.log('Success getting computer page', arguments);
-                }, function () {
-                    console.log('Error getting computer page', arguments);
-                });*/
+                    '&property=' + property + '&direction=' + direction);
             },
             getCompanies: function () {
-                return $http.get(urlCompanies);/*.then(function () {
-                    console.log('Success getting companies', arguments);
-                }, function () {
-                    console.log('Error getting companies', arguments);
-                });*/
+                return $http.get(urlCompanies);
             }
         };
     }
