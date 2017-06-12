@@ -5,7 +5,7 @@
     </form>
 
     <div class="container">
-        <h1 id="homeTitle">{{$ctrl.page.totalElements}} computers.found</h1>
+        <h1 id="homeTitle">{{$ctrl.currentPage.totalElements}} computers.found</h1>
         <div id="actions" class="form-horizontal">
             <div class="pull-left">
                 <form id="searchForm" action="#" method="GET" class="form-inline">
@@ -74,6 +74,6 @@
 
 <footer class="navbar-fixed-bottom">
     <div class="container text-center">
-        <app.pagination page="$ctrl.currentPage" events="{changePage: $ctrl.setPageLength, changeSizePage: $ctrl.setPageRequested}"/>
+        <app.pagination optionsdisplay="[20,50,100]" page="$ctrl.currentPage" events="{changeSizePage: $ctrl.setPageLength, changePage: $ctrl.setPageRequested}"/>
     </div>
 </footer>

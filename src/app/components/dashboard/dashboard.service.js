@@ -11,11 +11,18 @@
         var urlComputerPage = baseApi + '/computers/page';
 
         return {
-            getComputerPage: function (page, size, property, direction) {
-                return $http.get(urlComputerPage + '?page=' + page + '&size=' + size +
-                    '&property=' + property + '&direction=' + direction);
+            getComputerPage: (page, size, property, direction, search = '') => {
+                return $http.get(urlComputerPage, {
+                    params: {
+                        page: page,
+                        size: size,
+                        property: property,
+                        direction: direction,
+                        search: search
+                    }
+                });
             },
-            getCompanies: function () {
+            getCompanies: () => {
                 return $http.get(urlCompanies);
             }
         };

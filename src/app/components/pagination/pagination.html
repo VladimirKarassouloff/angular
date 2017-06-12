@@ -1,7 +1,25 @@
 <ul class="pagination">
 
-    <li ng-repeat="n in $ctrl.myRange">
-        <div href="#" ng-click="$ctrl.changePage(n)">{{n}}</div>
+    <li ng-if="$ctrl.drawStartPages">
+        <a href="#" ng-click="$ctrl.changePage(0)">1</a>
     </li>
-    
+    <li ng-if="$ctrl.drawStartPages">
+        <a href="#" disabled>...</a>
+    </li>
+
+    <li ng-repeat="n in $ctrl.myRange" ng-class="{active: $ctrl.isCurrentPage(n)}" >
+        <a href="#" ng-click="$ctrl.changePage(n)">{{n+1}}</a>
+    </li>
+
+    <li ng-if="$ctrl.drawEndPages">
+        <a href="#" disabled>...</a>
+    </li>
+    <li ng-if="$ctrl.drawEndPages">
+        <a href="#" ng-click="$ctrl.changePage($ctrl.page.totalPages-1)">{{$ctrl.page.totalPages-1}}</a>
+    </li>
 </ul>
+
+
+<div class="btn-group btn-group-sm pull-right"  role="group">
+    <a href="#" class="btn btn-default" ng-class="{active: $ctrl.isCurrentSize(s)}" ng-click="$ctrl.changePageSize(s)" ng-repeat="s in $ctrl.optionsdisplay">{{s}}</a>
+</div>

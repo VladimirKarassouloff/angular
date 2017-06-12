@@ -16,7 +16,7 @@
         // Param request for the displayed page
         vm.searchTerm = '';
         vm.pageRequested = 0;
-        vm.sizePage = 10;
+        vm.sizePage = 20;
         vm.propertySorted = 'name';
         vm.sortOrder = 'ASC';
 
