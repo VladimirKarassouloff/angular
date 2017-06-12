@@ -4,7 +4,7 @@
         'ngAnimate',
         'ui.router',
         'blocks',
-        'app.common'
+        'app'
     ]);
 
 })();

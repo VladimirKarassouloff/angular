@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('app.common')
+    angular.module('app')
         .factory('$clientService', ClientService);
 
     /* @ngInject */

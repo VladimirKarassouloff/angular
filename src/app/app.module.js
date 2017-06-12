@@ -6,7 +6,8 @@
         'blocks',
         'app.hello',
         'app.dashboard',
-        'ui.bootstrap'
+        'ui.bootstrap',
+        'pascalprecht.translate'
     ]);
 
 })();

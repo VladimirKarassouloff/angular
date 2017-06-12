@@ -1,23 +1,20 @@
 <cdb-header></cdb-header>
 <section id="main">
-
-    <form id="logoutForm" action="${pageContext.request.contextPath}/logout" method="post">
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-    </form>
-
     <div class="container">
-        <h1 id="homeTitle">{{$ctrl.currentPage.totalElements}} computers.found</h1>
+        <h1 id="homeTitle">{{$ctrl.currentPage.totalElements}} {{'computers.found' | translate }}</h1>
         <div id="actions" class="form-horizontal">
             <div class="pull-left">
                 <form class="form-inline" ng-submit="$ctrl.updatePage()">
                     <input ng-model="$ctrl.searchTerm" type="search" id="searchbox" name="search" class="form-control"
-                           placeholder="Search name"/>
-                    <input class="btn btn-primary" type="submit" ng-click="$ctrl.updatePage()" value="filter.by.name" />
+                           placeholder="{{'lbl.search.by.name' | translate}}"/>
+                    <input class="btn btn-primary" type="submit" ng-click="$ctrl.updatePage()"
+                           value="{{'filter.by.name' | translate }}"/>
                 </form>
             </div>
             <div class="pull-right">
-                <a href="/computer" class="btn btn-success" id="addComputer">computer.add</a>
-                <a class="btn btn-default" id="editComputer" href="#" ng-click="$ctrl.toggleEditMode()">edit</a>
+                <a href="/computer" class="btn btn-success" id="addComputer">{{'computer.add' | translate }}</a>
+                <a class="btn btn-default" id="editComputer" href="#" ng-click="$ctrl.toggleEditMode()">{{'edit' |
+                    translate}}</a>
             </div>
         </div>
     </div>
@@ -39,16 +36,18 @@
                     </span>
                 </th>
                 <th>
-                    <a href="#" ng-click="$ctrl.toggleOrderProperty('name')">computer.name</a>
+                    <a href="#" ng-click="$ctrl.toggleOrderProperty('name')">{{'computer.name' | translate }}</a>
                 </th>
                 <th>
-                    <a href="#" ng-click="$ctrl.toggleOrderProperty('introduced')">computer.introduced</a>
+                    <a href="#" ng-click="$ctrl.toggleOrderProperty('introduced')">{{'computer.introduced' | translate
+                        }}</a>
                 </th>
                 <th>
-                    <a href="#" ng-click="$ctrl.toggleOrderProperty('discontinued')">computer.discontinued</a>
+                    <a href="#" ng-click="$ctrl.toggleOrderProperty('discontinued')">{{'computer.discontinued' |
+                        translate }}</a>
                 </th>
                 <th>
-                    <a href="#" ng-click="$ctrl.toggleOrderProperty('company.name')">company</a>
+                    <a href="#" ng-click="$ctrl.toggleOrderProperty('company.name')">{{'company' | translate }}</a>
                 </th>
             </tr>
             </thead>
@@ -56,11 +55,10 @@
 
             <tr ng-if="$ctrl.currentPage.content.length == 0">
                 <td colspan="5">
-                    no.computer.found
+                    {{'no.computer.found' | translate }}
                 </td>
             </tr>
 
-            <!-- TODO track by -->
             <tr ng-repeat="computer in $ctrl.currentPage.content track by $index">
                 <td class="editMode" ng-hide="$ctrl.editMode"><input type="checkbox" name="cb" class="cb" value=""></td>
                 <td><a href="#" ng-click="$ctrl.editComputer(computer)">{{computer.name}}</a></td>
@@ -75,6 +73,9 @@
 </section>
 
 <footer class="navbar-fixed-bottom">
+
+    <cdb-language-changer></cdb-language-changer>
+
     <div class="container text-center">
         <app.pagination optionsdisplay="[20,50,100]" page="$ctrl.currentPage"
                         events="{changeSizePage: $ctrl.setPageLength, changePage: $ctrl.setPageRequested}"/>
