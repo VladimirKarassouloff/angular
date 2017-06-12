@@ -3,7 +3,8 @@
     angular.module('app.dashboard', [
         'ngAnimate',
         'ui.router',
-        'blocks'
+        'blocks',
+        'app.common'
     ]);
 
 })();

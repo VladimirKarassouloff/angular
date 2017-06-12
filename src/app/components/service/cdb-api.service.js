@@ -1,11 +1,11 @@
 (function () {
     'use strict';
 
-    angular.module('app.dashboard')
+    angular.module('app.common')
         .factory('$clientService', ClientService);
 
     /* @ngInject */
-    function ClientService($http) {
+    function ClientService($http, $computerFactory) {
         var baseApi = 'http://localhost:8080/mydeployyy/api';
         var urlCompanies = baseApi + '/companies';
         var urlComputerPage = baseApi + '/computers/page';
@@ -20,6 +20,14 @@
                         direction: direction,
                         search: search
                     }
+                }).then((resp) => {
+                    let data = resp.data;
+                    let mappedContent = [];
+                    data.content.forEach((obj) => {
+                        mappedContent.push($computerFactory.map(obj));
+                    });
+                    data.content = mappedContent;
+                    return data;
                 });
             },
             getCompanies: () => {

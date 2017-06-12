@@ -27,18 +27,19 @@
 
         function $onInit() {
             $log.debug('DashboardController init' + $clientService);
-            updatePage();
+            vm.updatePage();
         }
 
-        function updatePage() {
-            console.log('TODO prendre en compte le searchterm ' + vm.searchTerm);
-            $clientService.getComputerPage(vm.pageRequested, vm.sizePage, vm.propertySorted, vm.sortOrder).then((resp) => {
-                console.log(resp.data);
-                vm.currentPage = resp.data;
-            }, () => {
-                console.log('TODO handle error');
-            });
-        }
+        vm.updatePage = () => {
+            $clientService.getComputerPage(vm.pageRequested, vm.sizePage,
+                vm.propertySorted, vm.sortOrder, vm.searchTerm).then((page) => {
+                    console.log('Page : ', page);
+                    vm.currentPage = page;
+                }, () => {
+                    console.log('TODO handle error');
+                }
+            );
+        };
 
         vm.toggleEditMode = () => {
             vm.editMode = !vm.editMode;
@@ -54,17 +55,17 @@
             } else {
                 vm.propertySorted = newPropertySorty;
             }
-            updatePage();
+            vm.updatePage();
         };
 
         vm.setPageLength = (newSizeRequest) => {
             vm.sizePage = newSizeRequest;
-            updatePage();
+            vm.updatePage();
         };
 
         vm.setPageRequested = (newPageRequested) => {
             vm.pageRequested = newPageRequested;
-            updatePage();
+            vm.updatePage();
         };
 
         vm.editComputer = (computer) => {

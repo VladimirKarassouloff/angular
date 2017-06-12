@@ -8,13 +8,14 @@
         <h1 id="homeTitle">{{$ctrl.currentPage.totalElements}} computers.found</h1>
         <div id="actions" class="form-horizontal">
             <div class="pull-left">
-                <form id="searchForm" action="#" method="GET" class="form-inline">
-                    <input ng-model="$ctrl.searchTerm" type="search" id="searchbox" name="search" class="form-control" placeholder="Search name"/>
-                    <input type="submit" id="searchsubmit" value="filter.by.name" class="btn btn-primary"/>
+                <form class="form-inline" ng-submit="$ctrl.updatePage()">
+                    <input ng-model="$ctrl.searchTerm" type="search" id="searchbox" name="search" class="form-control"
+                           placeholder="Search name"/>
+                    <input class="btn btn-primary" type="submit" ng-click="$ctrl.updatePage()" value="filter.by.name" />
                 </form>
             </div>
             <div class="pull-right">
-                <a href="/computer" class="btn btn-success" id="addComputer" >computer.add</a>
+                <a href="/computer" class="btn btn-success" id="addComputer">computer.add</a>
                 <a class="btn btn-default" id="editComputer" href="#" ng-click="$ctrl.toggleEditMode()">edit</a>
             </div>
         </div>
@@ -59,11 +60,11 @@
             </tr>
 
             <!-- TODO track by -->
-            <tr ng-repeat="computer in $ctrl.currentPage.content">
+            <tr ng-repeat="computer in $ctrl.currentPage.content track by $index">
                 <td class="editMode" ng-hide="$ctrl.editMode"><input type="checkbox" name="cb" class="cb" value=""></td>
                 <td><a href="#" ng-click="$ctrl.editComputer(computer)">{{computer.name}}</a></td>
-                <td>{{computer.introduced}}</td>
-                <td>{{computer.discontinued}}</td>
+                <td>{{computer.introduced | date:'dd/MM/yyyy'}}</td>
+                <td>{{computer.discontinued | date:'dd/MM/yyyy'}}</td>
                 <td>{{computer.companyName}}</td>
             </tr>
 
@@ -74,6 +75,7 @@
 
 <footer class="navbar-fixed-bottom">
     <div class="container text-center">
-        <app.pagination optionsdisplay="[20,50,100]" page="$ctrl.currentPage" events="{changeSizePage: $ctrl.setPageLength, changePage: $ctrl.setPageRequested}"/>
+        <app.pagination optionsdisplay="[20,50,100]" page="$ctrl.currentPage"
+                        events="{changeSizePage: $ctrl.setPageLength, changePage: $ctrl.setPageRequested}"/>
     </div>
 </footer>

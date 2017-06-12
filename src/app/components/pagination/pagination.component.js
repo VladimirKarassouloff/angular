@@ -72,17 +72,22 @@
             // Cutting part of the array for inexisting pages
             indexes = indexes.filter(a => a < vm.page.totalPages && a >= 0);
 
-            if (indexes[0] !== 0) {
-                indexes = indexes.splice(2, indexes.length);
-                vm.drawStartPages = true;
+            if (indexes.length < vm.page.totalPages) {
+                if (indexes[0] !== 0) {
+                    indexes = indexes.splice(2, indexes.length);
+                    vm.drawStartPages = true;
+                } else {
+                    vm.drawStartPages = false;
+                }
+
+                if (indexes[indexes.length - 1] !== vm.page.totalPages - 1) {
+                    indexes = indexes.splice(0, indexes.length - 2);
+                    vm.drawEndPages = true;
+                } else {
+                    vm.drawEndPages = false;
+                }
             } else {
                 vm.drawStartPages = false;
-            }
-
-            if (indexes[indexes.length - 1] !== vm.page.totalPages - 1) {
-                indexes = indexes.splice(0, indexes.length - 2);
-                vm.drawEndPages = true;
-            } else {
                 vm.drawEndPages = false;
             }
 
