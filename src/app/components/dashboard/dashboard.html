@@ -11,7 +11,8 @@
                 </form>
             </div>
             <div class="pull-right">
-                <a  ui-sref="shell.computer-add"  class="btn btn-success" id="addComputer">{{'computer.add' | translate }}</a>
+                <a ui-sref="shell.computer-add" class="btn btn-success" id="addComputer">{{'computer.add' | translate
+                    }}</a>
                 <a class="btn btn-default" id="editComputer" href="#" ng-click="$ctrl.toggleEditMode()">{{'edit' |
                     translate}}</a>
             </div>
@@ -38,8 +39,8 @@
                     <a href="#" ng-click="$ctrl.toggleOrderProperty('name')">{{'computer.name' | translate }}</a>
                 </th>
                 <th>
-                    <a href="#" ng-click="$ctrl.toggleOrderProperty('introduced')">{{'computer.introduced' | translate
-                        }}</a>
+                    <a href="#" ng-click="$ctrl.toggleOrderProperty('introduced')">{{'computer.introduced' |
+                        translate}}</a>
                 </th>
                 <th>
                     <a href="#" ng-click="$ctrl.toggleOrderProperty('discontinued')">{{'computer.discontinued' |
@@ -60,7 +61,7 @@
 
             <tr ng-repeat="computer in $ctrl.currentPage.content track by $index">
                 <td class="editMode" ng-hide="$ctrl.editMode"><input type="checkbox" name="cb" class="cb" value=""></td>
-                <td><a href="#" ng-click="$ctrl.editComputer(computer)">{{computer.name}}</a></td>
+                <td><a ui-sref="shell.computer-edit({id:computer.id,computer:computer})">{{computer.name}}</a></td>
                 <td>{{computer.introduced | date:'dd/MM/yyyy'}}</td>
                 <td>{{computer.discontinued | date:'dd/MM/yyyy'}}</td>
                 <td>{{computer.companyName}}</td>

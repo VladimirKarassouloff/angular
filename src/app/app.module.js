@@ -4,6 +4,7 @@
         'ngAnimate',
         'ui.router',
         'blocks',
+        'app.services',
         'app.dashboard',
         'app.hello',
         'ui.bootstrap',

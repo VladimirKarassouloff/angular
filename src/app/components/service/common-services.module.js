@@ -1,11 +1,9 @@
 (function() {
     'use strict';
-    angular.module('app.dashboard', [
+    angular.module('app.services', [
         'ngAnimate',
         'ui.router',
-        'blocks',
-        'app.services'
-
+        'blocks'
     ]);
 
 })();
