@@ -7,12 +7,12 @@
     /* @ngInject */
     function routesConfig($stateProvider) {
         $stateProvider
-            .state('computer', {
-                url: '/computer',
+            .state('shell.computer-add', {
+                url: '/computer-add',
                 params: {
                     computer: null
                 },
-                component: 'cdbComputer'
+                component: 'cdbAddComputer'
             });
     }
 })();

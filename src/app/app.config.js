@@ -8,7 +8,7 @@
     /* @ngInject */
     function configureRoutes($urlRouterProvider, $locationProvider) {
         $locationProvider.html5Mode(true).hashPrefix('!');
-        $urlRouterProvider.otherwise('/404');
+        $urlRouterProvider.otherwise('/shell/404');
     }
 
     /* @ngInject */

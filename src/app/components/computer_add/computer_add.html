@@ -1,0 +1,50 @@
+<section id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-8 col-xs-offset-2 box">
+                <h1>
+                    {{ 'computer.add' | translate }}
+                </h1>
+
+                <fieldset>
+                    <div class="form-group">
+                        <label>{{ 'computer.name' | translate }}</label>
+                        <input type="text" class="form-control" id="computerName" ng-model="$ctrl.computer.name"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="introduced">{{ 'computer.introduced' | translate }}</label>
+                        <div class="input-group date introduced">
+                            <input ng-model="$ctrl.computer.introduced" id="introduced" type="text" class="form-control"/><span
+                                class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="discontinued">{{ 'computer.discontinued' | translate }}</label>
+                        <div class="input-group date discontinued">
+                            <input ng-model="$ctrl.computer.discontinued" id="discontinued" type="text" class="form-control"/><span
+                                class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="companyId">{{ 'company' | translate }}</label>
+                        <select ng-model="$ctrl.computer.companyId" class="form-control" id="companyId">
+                            <option value="">--</option>
+                            <option ng-repeat="company in $ctrl.companies" value="{{company.id}}">{{company.name}}
+                            </option>
+                        </select>
+                    </div>
+                </fieldset>
+                <div class="actions pull-right">
+                    <input id="submit-button" type="submit" ng-click="$ctrl.submitForm()"
+                           value="{{ 'add' | translate }}"
+                           class="btn btn-primary">
+                    {{ 'or' | translate }}
+                    <a href="index" class="btn btn-default">{{ 'abort' | translate }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

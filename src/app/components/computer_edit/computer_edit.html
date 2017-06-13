@@ -1,20 +1,19 @@
-<cdb-header></cdb-header>
 <section id="main">
     <div class="container">
         <div class="row">
             <div class="col-xs-8 col-xs-offset-2 box">
                 <h1>
-                    {{ $ctrl.computer.id ? 'computer.edit' : 'computer.add' }}
+                    {{ 'computer.edit' | translate }}
                 </h1>
 
                 <fieldset>
                     <div class="form-group">
-                        <label>computer.name</label>
+                        <label>{{ 'computer.name' | translate }}</label>
                         <input type="text" class="form-control" id="computerName" ng-model="$ctrl.computer.name"/>
                     </div>
 
                     <div class="form-group">
-                        <label for="introduced">computer.introduced</label>
+                        <label for="introduced">{{ 'computer.introduced' | translate }}</label>
                         <div class="input-group date introduced">
                             <input ng-model="$ctrl.computer.introduced" id="introduced" type="text" class="form-control"/><span
                                 class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
@@ -22,7 +21,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="discontinued">computer.discontinued</label>
+                        <label for="discontinued">{{ 'computer.discontinued' | translate }}</label>
                         <div class="input-group date discontinued">
                             <input ng-model="$ctrl.computer.discontinued" id="discontinued" type="text" class="form-control"/><span
                                 class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
@@ -30,7 +29,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="companyId">company</label>
+                        <label for="companyId">{{ 'company' | translate }}</label>
                         <select ng-model="$ctrl.computer.companyId" class="form-control" id="companyId">
                             <option value="">--</option>
                             <option ng-repeat="company in $ctrl.companies" value="{{company.id}}">{{company.name}}
@@ -40,10 +39,10 @@
                 </fieldset>
                 <div class="actions pull-right">
                     <input id="submit-button" type="submit" ng-click="$ctrl.submitForm()"
-                           value="{{ $ctrl.computer.id ? 'edit' : 'add' }}"
+                           value="{{ 'edit' | translate }}"
                            class="btn btn-primary">
-                    or
-                    <a href="index" class="btn btn-default">abort</a>
+                    {{ 'or' | translate }}
+                    <a href="index" class="btn btn-default">{{ 'abort' | translate }}</a>
                 </div>
             </div>
         </div>

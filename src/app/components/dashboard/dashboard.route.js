@@ -7,8 +7,12 @@
     /* @ngInject */
     function routesConfig($stateProvider) {
         $stateProvider
-            .state('dashboard', {
-                url: '/{dashboard}',
+            .state('shell.dashboard', {
+                url: '/dashboard',
+                component: 'cdbDashboard'
+            })
+            .state('shell.dashboard2', {
+                url: '/',
                 component: 'cdbDashboard'
             });
     }

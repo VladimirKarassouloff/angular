@@ -137,14 +137,14 @@ It is bootstraped by the [ng-app](https://docs.angularjs.org/api/ng/directive/ng
 
 Rewrite the actual code, to create a new AngularJS module named `app.hello`, that define a component `cdbHello`.
 This component is reachable through the state named `hello`, bound to the url `/hello`
-In order to let `app` module using the new `app.hello` module, don't forget to add it as a dependency in `hello.component.js`.
+In order to let `app` module using the new `app.hello` module, don't forget to add it as a dependency in `shell.component.js`.
 Add some style to this component (ie: title in red)
 This step should produce the following files:
 ```sh
 app/hello/hello.html
 app/hello/hello.module.js
 app/hello/hello.route.js
-app/hello/hello.component.js
+app/hello/shell.component.js
 app/hello/hello.spec.js
 app/hello/hello.css
 ```

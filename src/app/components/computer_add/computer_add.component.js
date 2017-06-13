@@ -2,8 +2,8 @@
     'use strict';
 
     angular.module('app.dashboard')
-        .component('cdbComputer', {
-            templateUrl: 'src/app/components/computer/computer.html',
+        .component('cdbAddComputer', {
+            templateUrl: 'src/app/components/computer_add/computer_add.html',
             controller: ComputerController
         });
 

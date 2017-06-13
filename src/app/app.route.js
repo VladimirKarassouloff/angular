@@ -7,7 +7,7 @@
     /* @ngInject */
     function routesConfig($stateProvider) {
         $stateProvider
-            .state('404', {
+            .state('shell.404', {
                 url: '/404',
                 templateUrl: 'src/app/404.html'
             });

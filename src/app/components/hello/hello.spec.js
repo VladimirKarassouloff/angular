@@ -6,7 +6,7 @@ describe('hello component', () => {
     beforeEach(module('app.hello', $provide => {
         $provide.factory('hellocdb', () => {
             return {
-                templateUrl: 'app/components/hello/hello.html'
+                templateUrl: 'app/components/hello/shell.html'
             };
         });
     }));
